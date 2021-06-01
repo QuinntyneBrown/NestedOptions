@@ -1,4 +1,10 @@
 :host {
+
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+
+  font-family: sans-serif;
+
   .form-field {
     display: block;
     box-sizing: border-box;
@@ -10,13 +16,21 @@
     }
   }
 
-  ul, li {
-    list-style: none;
-    span {
-      box-sizing: border-box;
-      padding:0 5px;
-    }
+  th {
+    padding:0 20px;
+    box-sizing: border-box;
   }
 
+  td {
+    padding: 5px 10px;
+    box-sizing: border-box;
+  }
+
+  button {
+    padding:10px;
+    margin:20px;
+    box-sizing: border-box;
+    cursor: pointer;
+  }
 
 }

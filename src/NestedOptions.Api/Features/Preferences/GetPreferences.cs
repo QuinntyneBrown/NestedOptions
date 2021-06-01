@@ -12,27 +12,28 @@ namespace NestedOptions.Api.Features
 {
     public class GetPreferences
     {
-        public class Request: IRequest<Response> { }
+        public class Request : IRequest<Response> { }
 
-        public class Response: ResponseBase
+        public class Response : ResponseBase
         {
             public List<PreferencesDto> Preferences { get; set; }
         }
 
-        public class Handler: IRequestHandler<Request, Response>
+        public class Handler : IRequestHandler<Request, Response>
         {
             private readonly INestedOptionsDbContext _context;
-        
+
             public Handler(INestedOptionsDbContext context)
                 => _context = context;
-        
+
             public async Task<Response> Handle(Request request, CancellationToken cancellationToken)
             {
-                return new () {
+                return new()
+                {
                     Preferences = await _context.Preferences.Select(x => x.ToDto()).ToListAsync()
                 };
             }
-            
+
         }
     }
 }

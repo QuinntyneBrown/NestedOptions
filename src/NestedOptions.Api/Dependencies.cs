@@ -19,13 +19,13 @@ namespace NestedOptions.Api
                 options.SwaggerDoc("v1", new OpenApiInfo
                 {
                     Version = "v1",
-                    Title = "",
-                    Description = "",
+                    Title = "Nested Options",
+                    Description = "Sample how to save nested objects with boolean fields using AspNetCore and Angular",
                     TermsOfService = new Uri("https://example.com/terms"),
                     Contact = new OpenApiContact
                     {
-                        Name = "",
-                        Email = ""
+                        Name = "Quinntyne Brown",
+                        Email = "quinntynebrown@gmail.com"
                     },
                     License = new OpenApiLicense
                     {

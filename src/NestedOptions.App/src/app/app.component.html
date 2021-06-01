@@ -1,60 +1,70 @@
 <ng-container *ngIf="vm$ | async as vm">
 
-  <form [formGroup]="form">
+  <div class="user-editor">
+    <h1 *ngIf="!form.value.userId">Create User</h1>
+    <h1 *ngIf="form.value.userId">Edit User</h1>
 
-    <div class="form-field">
-      <label>Username</label>
-      <input formControlName="username" type="text">
-    </div>
-
-    <div class="form-field">
-      <label>Is Admin</label>
-      <input formControlName="isAdmin" type="checkbox">
-    </div>
-
-    <div formGroupName="preferences">
+    <form [formGroup]="form">
 
       <div class="form-field">
-        <label>Allow Social Sign In</label>
-        <input formControlName="allowSocialSignIn" type="checkbox">
+        <label>Username</label>
+        <input formControlName="username" type="text">
       </div>
 
       <div class="form-field">
-        <label>Allow Multiple Languages</label>
-        <input formControlName="allowMultipleLanguages" type="checkbox">
+        <label>Is Admin</label>
+        <input formControlName="isAdmin" type="checkbox">
       </div>
 
-    </div>
-  </form>
+      <h2>User Preferences</h2>
 
-  <button (click)="save()">Save</button>
+      <div formGroupName="preferences">
 
+        <div class="form-field">
+          <label>Allow Social Sign In</label>
+          <input formControlName="allowSocialSignIn" type="checkbox">
+        </div>
 
-  <h1>Users</h1>
+        <div class="form-field">
+          <label>Allow Multiple Languages</label>
+          <input formControlName="allowMultipleLanguages" type="checkbox">
+        </div>
 
-  <div *ngFor="let user of vm.users">
-    <h2>{{ user.username }}</h2>
-    <ul>
-      <li>
-        <a>
-          <span>{{ user.preferences.allowSocialSignIn }}</span>
-          <span>Allow Social SignIn</span>
-        </a>
-      </li>
-      <li>
-        <a>
-          <span>{{ user.preferences.allowMultipleLanguages }}</span>
-          <span>Allow Multiple Languages</span>
-        </a>
-      </li>
-      <li>
-        <a>
-          <span>{{ user.isAdmin }}</span>
-          <span>Is Admin</span>
-        </a>
-      </li>
-    </ul>
+      </div>
+    </form>
+
+    <button (click)="save()">Save</button>
+
+    <button (click)="cancel()">Cancel</button>
   </div>
+
+
+
+  <div class="user-list">
+    <h1>Users</h1>
+
+    <table>
+      <tr>
+        <th>Username</th>
+        <th>Is Admin</th>
+        <th>Allow Social SignIn</th>
+        <th>Allow Multiple Languages</th>
+        <th></th>
+      </tr>
+      <tr *ngFor="let user of vm.users">
+        <td>{{ user.username }}</td>
+        <td>{{ user.isAdmin }}</td>
+        <td>{{ user.preferences.allowSocialSignIn }}</td>
+        <td>{{ user.preferences.allowMultipleLanguages }}</td>
+        <td>
+          <button (click)="edit(user)">edit</button>
+          <button (click)="delete(user)">delete</button>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+
 </ng-container>
 
 

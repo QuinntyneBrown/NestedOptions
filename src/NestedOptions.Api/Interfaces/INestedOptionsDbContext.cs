@@ -10,6 +10,6 @@ namespace NestedOptions.Api.Interfaces
         DbSet<User> Users { get; }
         DbSet<Preferences> Preferences { get; }
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);
-        
+
     }
 }

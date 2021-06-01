@@ -14,42 +14,42 @@ namespace NestedOptions.Api.Features
 {
     public class GetUsersPage
     {
-        public class Request: IRequest<Response>
+        public class Request : IRequest<Response>
         {
             public int PageSize { get; set; }
             public int Index { get; set; }
         }
 
-        public class Response: ResponseBase
+        public class Response : ResponseBase
         {
             public int Length { get; set; }
             public List<UserDto> Entities { get; set; }
         }
 
-        public class Handler: IRequestHandler<Request, Response>
+        public class Handler : IRequestHandler<Request, Response>
         {
             private readonly INestedOptionsDbContext _context;
-        
+
             public Handler(INestedOptionsDbContext context)
                 => _context = context;
-        
+
             public async Task<Response> Handle(Request request, CancellationToken cancellationToken)
             {
                 var query = from user in _context.Users
-                    select user;
-                
+                            select user;
+
                 var length = await _context.Users.CountAsync();
-                
+
                 var users = await query.Page(request.Index, request.PageSize)
                     .Select(x => x.ToDto()).ToListAsync();
-                
+
                 return new()
                 {
                     Length = length,
                     Entities = users
                 };
             }
-            
+
         }
     }
 }

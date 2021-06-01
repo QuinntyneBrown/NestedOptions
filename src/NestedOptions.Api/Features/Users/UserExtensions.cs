@@ -7,7 +7,7 @@ namespace NestedOptions.Api.Features
     {
         public static UserDto ToDto(this User user)
         {
-            return new ()
+            return new()
             {
                 UserId = user.UserId,
                 Username = user.Username,
@@ -15,6 +15,6 @@ namespace NestedOptions.Api.Features
                 Preferences = user.Preferences.ToDto()
             };
         }
-        
+
     }
 }
