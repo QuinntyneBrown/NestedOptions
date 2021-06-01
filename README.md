@@ -5,6 +5,9 @@ Sample how to save nested objects with boolean fields using AspNetCore and Angul
 
 If you like or are using this project to learn or start your solution, please give it a star. Thanks!
 
+![image](https://user-images.githubusercontent.com/1749159/120392169-184b4580-c2fe-11eb-9ebd-26b2050b1a29.png)
+
+
 ## How to run locally
 
 1. [Download and install the .NET Core SDK](https://dotnet.microsoft.com/download)
