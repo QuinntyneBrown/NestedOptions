@@ -1,0 +1,22 @@
+:host {
+  .form-field {
+    display: block;
+    box-sizing: border-box;
+    padding: 20px;
+
+    label {
+      box-sizing: border-box;
+      padding: 0 20px;
+    }
+  }
+
+  ul, li {
+    list-style: none;
+    span {
+      box-sizing: border-box;
+      padding:0 5px;
+    }
+  }
+
+
+}

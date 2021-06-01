@@ -1,0 +1,61 @@
+<ng-container *ngIf="vm$ | async as vm">
+
+  <form [formGroup]="form">
+
+    <div class="form-field">
+      <label>Username</label>
+      <input formControlName="username" type="text">
+    </div>
+
+    <div class="form-field">
+      <label>Is Admin</label>
+      <input formControlName="isAdmin" type="checkbox">
+    </div>
+
+    <div formGroupName="preferences">
+
+      <div class="form-field">
+        <label>Allow Social Sign In</label>
+        <input formControlName="allowSocialSignIn" type="checkbox">
+      </div>
+
+      <div class="form-field">
+        <label>Allow Multiple Languages</label>
+        <input formControlName="allowMultipleLanguages" type="checkbox">
+      </div>
+
+    </div>
+  </form>
+
+  <button (click)="save()">Save</button>
+
+
+  <h1>Users</h1>
+
+  <div *ngFor="let user of vm.users">
+    <h2>{{ user.username }}</h2>
+    <ul>
+      <li>
+        <a>
+          <span>{{ user.preferences.allowSocialSignIn }}</span>
+          <span>Allow Social SignIn</span>
+        </a>
+      </li>
+      <li>
+        <a>
+          <span>{{ user.preferences.allowMultipleLanguages }}</span>
+          <span>Allow Multiple Languages</span>
+        </a>
+      </li>
+      <li>
+        <a>
+          <span>{{ user.isAdmin }}</span>
+          <span>Is Admin</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</ng-container>
+
+
+
